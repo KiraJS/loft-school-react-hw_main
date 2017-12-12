@@ -1,0 +1,19 @@
+.ui.input {
+  width: 100%;
+  margin: 10px 0;
+  padding-left: 10px;
+}
+.error-block {
+  color: rgb(255, 99, 71);
+}
+
+.btn {
+  margin: 10px 0!important;
+  background-color: #4db6e2!important;
+  color: #fff!important;
+  border: none!important;
+  font-size: 22px!important;
+  padding: 12px 0!important;
+  font-weight: 300!important;
+  cursor: pointer;
+}
