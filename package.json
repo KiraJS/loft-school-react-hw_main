@@ -32,6 +32,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "prettier": "1.9.2",
     "recompose": "^0.26.0"
   }
 }

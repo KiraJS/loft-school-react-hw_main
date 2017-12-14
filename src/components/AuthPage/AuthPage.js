@@ -10,10 +10,21 @@ import {
 } from "./styled";
 import { Icon, Input, Button } from "semantic-ui-react";
 import Particles from "react-particles-js";
-import ParticlesParams from "../../particles-params";
+import ParticlesParams from "../../particles-params"
+import { connect } from "react-redux";
+
+import { authLoginRequest, authRegistrationRequest } from "../../actions/auth";
+import {
+    getIsAuthorized,
+    getLoginError,
+    getRegistrationError
+} from "../../reducers/auth";
+
+
 import "./AuthPage.css";
 
 export class AuthPage extends Component {
+
   state = {
     email: "",
     password: "",
@@ -21,9 +32,24 @@ export class AuthPage extends Component {
     error: null
   };
 
+  switchForm = () => {
+      this.setState({ isLogin: !this.state.isLogin });
+  }
+
+  handleSubmit = () => {
+      const { isLogin, email, password } = this.state;
+      const { authLoginRequest, authRegistrationRequest } = this.props;
+      if (isLogin) {
+          authLoginRequest({ email, password });
+      } else {
+          authRegistrationRequest({ email, password });
+      }
+  };
+
   render() {
     const { isLogin } = this.state;
-    return (
+      const { loginError, registationError } = this.props;
+      return (
       <Wrap>
         <FormWrap>
           <AuthWrap>
@@ -40,6 +66,8 @@ export class AuthPage extends Component {
                         onChange={this.handleChange}
                         value={this.state.email}
                     />
+                    {isLogin && loginError ? (<p className="error-block">{loginError}</p>) : null}
+                    {!isLogin && registationError ? (<p className="error-block">{registationError}</p>) : null}
                 </InputWrap>
                 <InputWrap>
                     <Input
@@ -53,7 +81,7 @@ export class AuthPage extends Component {
                         value={this.state.password}
                     />
                 </InputWrap>
-                  <Button className="btn">
+                  <Button className="btn" onClick={this.handleSubmit}>
                       {isLogin? 'Войти ' : 'Зарегистрироваться'}
                   </Button>
               </FormContent>
@@ -62,16 +90,16 @@ export class AuthPage extends Component {
               {isLogin ? (
                 <p>
                   Впервые на сайте?{" "}
-                  <a href="" className="login">
+                  <span className="link" onClick={this.switchForm}>
                     Регистрация
-                  </a>
+                  </span>
                 </p>
               ) : (
                 <p>
                   Уже зарегистрированы?{" "}
-                  <a href="" className="reg">
+                  <span className="link" onClick={this.switchForm}>
                     Войти
-                  </a>
+                  </span>
                 </p>
               )}
             </BottomWrap>
@@ -83,4 +111,13 @@ export class AuthPage extends Component {
   }
 }
 
-export default AuthPage
+const mapStateToProps = state => ({
+    isAuthorized: getIsAuthorized(state),
+    loginError: getLoginError(state),
+    registationError: getRegistrationError(state)
+});
+const mapDispatchToProps = {
+    authLoginRequest,
+    authRegistrationRequest
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);

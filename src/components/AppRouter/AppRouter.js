@@ -5,10 +5,13 @@ import {
 } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import "./AppRouter.css";
+import { getIsAuthorized } from "../../reducers/auth";
+import { connect } from "react-redux";
 
 export class AppRouter extends Component {
   state = {};
   render() {
+    const { isAuthorized } = this.props;
     return (
       <div className="App">
         <Switch>
@@ -19,4 +22,7 @@ export class AppRouter extends Component {
   }
 }
 
-export default AppRouter
+const mapStateToProps = state => ({
+    isAuthorized: getIsAuthorized(state)
+});
+export default (connect(mapStateToProps, null)(AppRouter));
