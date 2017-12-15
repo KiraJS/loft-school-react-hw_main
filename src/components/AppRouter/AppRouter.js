@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import {
-  Route,
-  Switch
-} from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
+import MainPrivatePage from "../MainPrivatePage/MainPrivatePage";
+import "semantic-ui-css/semantic.min.css";
 import "./AppRouter.css";
 import { getIsAuthorized } from "../../reducers/auth";
 import { connect } from "react-redux";
@@ -15,6 +14,8 @@ export class AppRouter extends Component {
     return (
       <div className="App">
         <Switch>
+          <MainPrivatePage exact component={MainPrivatePage} />
+          {isAuthorized ? <Redirect to="/trade" /> : null}
           <Route path="/" exact component={AuthPage} />
         </Switch>
       </div>
@@ -23,6 +24,6 @@ export class AppRouter extends Component {
 }
 
 const mapStateToProps = state => ({
-    isAuthorized: getIsAuthorized(state)
+  isAuthorized: getIsAuthorized(state)
 });
-export default (connect(mapStateToProps, null)(AppRouter));
+export default connect(mapStateToProps, null)(AppRouter);

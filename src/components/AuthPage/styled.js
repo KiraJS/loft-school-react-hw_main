@@ -98,4 +98,3 @@ export const InputWrap = styled.div`
   position: relative;
   left: -5px;
 `;
-
