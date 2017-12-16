@@ -6,7 +6,6 @@ import {
 } from "../actions/auth";
 import { login, registration } from "../api";
 
-
 export default function*(fn, args) {
   try {
     const response = yield call(fn, args);

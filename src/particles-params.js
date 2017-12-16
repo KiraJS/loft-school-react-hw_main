@@ -1,26 +1,26 @@
 export default {
   particles: {
     number: {
-      value: 20,
+      value: 50,
       density: {
         enable: true,
         value_area: 1500
       }
     },
     color: {
-      value: '#4db6e2'
+      value: "#4db6e2"
     },
     shape: {
-      type: 'polygon',
+      type: "polygon",
       stroke: {
         width: 0,
-        color: '#000000'
+        color: "#000000"
       },
       polygon: {
         nb_sides: 5
       },
       image: {
-        src: 'img/github.svg',
+        src: "img/github.svg",
         width: 100,
         height: 100
       }
@@ -48,17 +48,17 @@ export default {
     line_linked: {
       enable: true,
       distance: 192.28766234286476,
-      color: '#4db6e2',
+      color: "#4db6e2",
       opacity: 0.8011985930952699,
       width: 1.2819177489524316
     },
     move: {
       enable: true,
       speed: 6,
-      direction: 'none',
+      direction: "none",
       random: true,
       straight: false,
-      out_mode: 'out',
+      out_mode: "out",
       bounce: false,
       attract: {
         enable: false,
@@ -68,7 +68,7 @@ export default {
     }
   },
   interactivity: {
-    detect_on: 'canvas',
+    detect_on: "canvas",
     modes: {
       grab: {
         distance: 400,

@@ -3,13 +3,15 @@ import {
   authLoginSuccess,
   authLoginFailure,
   authRegistrationRequest,
-  authRegistrationFailure
+  authRegistrationFailure,
+  logout
 } from "../actions/auth";
 import { handleActions } from "redux-actions";
 import { combineReducers } from "redux";
 const initialState = null;
 export const IsAuthorized = handleActions(
   {
+    [logout]: () => false,
     [authLoginRequest]: () => false,
     [authLoginSuccess]: () => true,
     [authLoginFailure]: () => false,
@@ -45,5 +47,4 @@ export default combineReducers({
 });
 export const getIsAuthorized = state => state.auth.IsAuthorized;
 export const getLoginError = state => state.auth.loginError;
-export const getRegistrationError = state =>
-  state.auth.registationError;
+export const getRegistrationError = state => state.auth.registationError;

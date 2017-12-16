@@ -8,7 +8,7 @@ import {
   FormContent,
   InputWrap
 } from "./styled";
-import { Icon, Input, Button } from "semantic-ui-react";
+import { Icon, Input } from "semantic-ui-react";
 import Particles from "react-particles-js";
 import ParticlesParams from "../../particles-params";
 import { connect } from "react-redux";
@@ -89,9 +89,9 @@ export class AuthPage extends Component {
                     value={this.state.password}
                   />
                 </InputWrap>
-                <Button className="btn" onClick={this.handleSubmit}>
+                <button className="btn" onClick={this.handleSubmit}>
                   {isLogin ? "Войти " : "Зарегистрироваться"}
-                </Button>
+                </button>
               </FormContent>
             </Form>
             <BottomWrap>

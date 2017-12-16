@@ -9,14 +9,15 @@
 }
 
 .btn {
-  margin: 10px 0!important;
-  background-color: #4db6e2!important;
-  color: #fff!important;
-  border: none!important;
-  font-size: 22px!important;
-  padding: 12px 0!important;
-  font-weight: 300!important;
+  margin: 10px 0;
+  background-color: #4db6e2;
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  padding: 12px 0;
+  font-weight: 300;
   cursor: pointer;
+  border-radius: .28571429rem;
 }
 
 .link {
